@@ -41,6 +41,8 @@ export default class Landing extends Component {
             }
         })
         sessionStorage.setItem('dispName', reqData.dispName)
+        props.history.push(`/${reqData.roomID}`);
+
     }
 
     onCreateRoom() {
@@ -65,6 +67,7 @@ export default class Landing extends Component {
             }
         })
         sessionStorage.setItem('dispName', reqData.dispName)
+        props.history.push(`/${reqData.roomID}`);
     }
 
     render() {
