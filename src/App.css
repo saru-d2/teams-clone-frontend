@@ -1,0 +1,28 @@
+.main-pane {
+  height: 100vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.centered {
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.red {
+  background-color: red;
+  color: white;
+}
