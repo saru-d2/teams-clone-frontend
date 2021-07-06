@@ -41,7 +41,7 @@ export default class Landing extends Component {
             }
         })
         sessionStorage.setItem('dispName', reqData.dispName)
-        props.history.push(`/${reqData.roomID}`);
+        this.props.history.push(`/${reqData.roomID}`);
 
     }
 
@@ -67,7 +67,7 @@ export default class Landing extends Component {
             }
         })
         sessionStorage.setItem('dispName', reqData.dispName)
-        props.history.push(`/${reqData.roomID}`);
+        this.props.history.push(`/${reqData.roomID}`);
     }
 
     render() {
