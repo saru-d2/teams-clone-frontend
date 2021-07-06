@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import socketClient from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
-import Chat from './chatPane'
 
+
+const SERVER = 'http://localhost:4000'
 
 const Video = (props) => {
     const ref = useRef();
@@ -21,15 +23,14 @@ const Video = (props) => {
 
 const Room = (props) => {
     const [peers, setPeers] = useState([]);
-    const socketRef = props.socketRef;
+    const socketRef = useRef();
     const userVideo = useRef();
     const peersRef = useRef([]);
     const dispName = props.dispName
     const roomID = props.roomID;
 
     useEffect(() => {
-        console.log(socketRef.current)
-        if (socketRef.current)
+        socketRef.current = socketClient(SERVER);
         socketRef.current.on('connection', () =>  {
             console.log('connected to client')
         })
