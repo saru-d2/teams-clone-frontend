@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from 'axios'
-
+import socket from '../helpers/socketConfig'
 import { VariableSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
+
 
 const Chat = (props) => {
     const [error, setError] = useState([])
@@ -10,10 +11,13 @@ const Chat = (props) => {
     const msg_input = useRef()
     const dispName = props.dispName
     const roomID = props.roomID
-    const socketRed = props.socketRef 
 
     useEffect(() => {
         getMsgs()
+        socket.on('new-msg', () => {
+            console.log('new-messages');
+            // getMsgs();
+        })
     })
 
     const getMsgs = () => {
@@ -35,6 +39,7 @@ const Chat = (props) => {
             axios.post('/sendMsg', reqData).then(res => {
                 console.log(res);
             })
+            socket.emit('new-msg', (roomID));
         }
     }
 
