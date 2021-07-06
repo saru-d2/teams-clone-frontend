@@ -26,3 +26,32 @@
   background-color: red;
   color: white;
 }
+
+.left-pane {
+  display: flex;
+  flex: 0.8;
+}
+
+.right-pane {
+  background-color: wheat;
+  flex: 0.2;
+}
+
+.vidGrid {
+  flex: 0.9;
+  background-color: rgb(72, 64, 82);
+}
+
+.prev-chats {
+  flex: 0.8;
+  background-color: violet;
+}
+
+.chat-input {
+  flex: 0.2;
+  background-color: turquoise;
+}
+
+.chat-pane {
+  flex-grow: 1;
+}
