@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(72, 64, 82);
+}
+
 .main-pane {
   height: 100vh;
 }
@@ -33,25 +37,64 @@
 }
 
 .right-pane {
-  background-color: wheat;
   flex: 0.2;
+  height: 100vh;
 }
 
 .vidGrid {
+  align-items: center;
+  justify-content: center;
   flex: 0.9;
+  overflow-y: scroll;
   background-color: rgb(72, 64, 82);
 }
 
 .prev-chats {
-  flex: 0.8;
+  flex: 0.95;
   background-color: violet;
+  overflow-y: scroll;
+  height: 100%;
+  overflow-x: clip;
 }
 
 .chat-input {
-  flex: 0.2;
+  flex: 0.05;
   background-color: turquoise;
 }
 
 .chat-pane {
   flex-grow: 1;
+  height: inherit;
+}
+
+.message-list {
+  width: 100%;
+  color: white;
+  list-style: none;
+  height: inherit;
+  background-color: rgb(56, 43, 70);
+}
+
+.msg {
+  width: 75%;
+  background-color: rgba(187, 110, 255, 0.399);
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+video {
+  width: 50%;
+  padding: 10px;
+}
+
+.controls {
+  background-color: teal;
+  flex: 0.1;
+  align-items: center;
+  justify-content: center;
+}
+
+svg {
+  padding: 5px;
+  color: white;
 }

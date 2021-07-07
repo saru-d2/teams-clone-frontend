@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import socketClient from "socket.io-client";
 import Peer from "simple-peer";
-import styled from "styled-components";
 import socket from '../helpers/socketConfig'
+import {Mic, MicOff, VideocamOff, Videocam} from '@material-ui/icons'
 
-const SERVER = 'http://localhost:4000'
+// const SERVER = 'http://localhost:4000'
+const SERVER = 'https://teams-clone-backend-server.herokuapp.com/'
 
 const Video = (props) => {
     const ref = useRef();
@@ -21,9 +21,14 @@ const Video = (props) => {
 }
 
 
+
+
 const Room = (props) => {
+    const [micStatus, setMic] = useState(true)
+    const [camStatus, setCam] = useState(true)
     const [peers, setPeers] = useState([]);
     const userVideo = useRef();
+    const userMediaRef = useRef();
     const peersRef = useRef([]);
     const dispName = props.dispName
     const roomID = props.roomID;
@@ -34,19 +39,21 @@ const Room = (props) => {
         })
         navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
             userVideo.current.srcObject = stream;
+            userMediaRef.current = stream; 
             socket.emit("join room", roomID);
             
             socket.on("all users", users => {
-                const peers = [];
+                const tempPeers = [];
+                console.log(users)
                 users.forEach(userID => {
                     const peer = createPeer(userID, socket.id, stream);
                     peersRef.current.push({
                         peerID: userID,
                         peer,
                     })
-                    peers.push(peer);
+                    tempPeers.push(peer);
                 })
-                setPeers(peers);
+                setPeers(tempPeers);
             })
 
             socket.on("user joined", payload => {
@@ -56,8 +63,15 @@ const Room = (props) => {
                     peer,
                 })
 
-                setPeers(users => [...users, peer]);
+                setPeers([...peers, peer]);
             });
+
+            socket.on("user-left", data => {
+                var tempPeers = peers
+                console.log('user-left', data)
+                
+                console.log('peers', peers)
+            })
 
             socket.on("receiving returned signal", payload => {
                 const item = peersRef.current.find(p => p.peerID === payload.id);
@@ -96,14 +110,61 @@ const Room = (props) => {
         return peer;
     }
 
+    function stuff(e) {
+        console.log(peers)
+    }
+
+    function toggleMute() {
+        if(userMediaRef.current)
+        // userMediaRef.current.getAudioTracks()[0].enabled = !userMediaRef.current.getAudioTracks()[0].enabled
+        setMic(!micStatus);
+        console.log('mute')
+    }
+    function toggleCam() {
+        if(userMediaRef.current)
+        userMediaRef.current.getVideoTracks()[0].enabled = !userMediaRef.current.getVideoTracks()[0].enabled
+        setCam(userMediaRef.current.getVideoTracks()[0].enabled);
+        console.log('cam')
+    }
+
+    function MicIcon() {
+        // if mic on
+        const enabled = micStatus
+        if (enabled)
+        return (
+            <Mic onClick={toggleMute}/>
+        )
+        else return (
+            <MicOff onClick={toggleMute}/>
+        )
+    }
+
+    function VidIcon() {
+        // if mic on
+        const enabled = camStatus
+        if (enabled)
+        return (
+            <Videocam onClick={toggleCam}/>
+        )
+        else return (
+            <VideocamOff onClick={toggleCam}/>
+        )
+    }
     return (
-        <div className='vidGrid'>
+        <div className='left-pane col'>
+        <div className='vidGrid col'>
             <video muted ref={userVideo} autoPlay playsInline />
             {peers.map((peer, index) => {
+                
                 return (
                     <Video key={index} peer={peer} />
                 );
             })}
+        </div>
+        <div className='controls row'>
+            <MicIcon/>
+            <VidIcon/>
+        </div>
         </div>
     );
 };
