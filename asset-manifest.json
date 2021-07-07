@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/teams-clone-frontend/static/css/main.8c73b12d.chunk.css",
-    "main.js": "/teams-clone-frontend/static/js/main.d91fda87.chunk.js",
-    "main.js.map": "/teams-clone-frontend/static/js/main.d91fda87.chunk.js.map",
+    "main.js": "/teams-clone-frontend/static/js/main.66943b05.chunk.js",
+    "main.js.map": "/teams-clone-frontend/static/js/main.66943b05.chunk.js.map",
     "runtime-main.js": "/teams-clone-frontend/static/js/runtime-main.4c68ba05.js",
     "runtime-main.js.map": "/teams-clone-frontend/static/js/runtime-main.4c68ba05.js.map",
-    "static/js/2.aad77d07.chunk.js": "/teams-clone-frontend/static/js/2.aad77d07.chunk.js",
-    "static/js/2.aad77d07.chunk.js.map": "/teams-clone-frontend/static/js/2.aad77d07.chunk.js.map",
+    "static/js/2.14353fdb.chunk.js": "/teams-clone-frontend/static/js/2.14353fdb.chunk.js",
+    "static/js/2.14353fdb.chunk.js.map": "/teams-clone-frontend/static/js/2.14353fdb.chunk.js.map",
     "static/js/3.b6e2f16d.chunk.js": "/teams-clone-frontend/static/js/3.b6e2f16d.chunk.js",
     "static/js/3.b6e2f16d.chunk.js.map": "/teams-clone-frontend/static/js/3.b6e2f16d.chunk.js.map",
     "index.html": "/teams-clone-frontend/index.html",
     "static/css/main.8c73b12d.chunk.css.map": "/teams-clone-frontend/static/css/main.8c73b12d.chunk.css.map",
-    "static/js/2.aad77d07.chunk.js.LICENSE.txt": "/teams-clone-frontend/static/js/2.aad77d07.chunk.js.LICENSE.txt"
+    "static/js/2.14353fdb.chunk.js.LICENSE.txt": "/teams-clone-frontend/static/js/2.14353fdb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4c68ba05.js",
-    "static/js/2.aad77d07.chunk.js",
+    "static/js/2.14353fdb.chunk.js",
     "static/css/main.8c73b12d.chunk.css",
-    "static/js/main.d91fda87.chunk.js"
+    "static/js/main.66943b05.chunk.js"
   ]
 }
