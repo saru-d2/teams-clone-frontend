@@ -29,9 +29,9 @@ const Chat = (props) => {
             console.log('new-messages');
             // getMsgs();
             console.log(Data)
+            setMesssages(Data)
             scrollToBottom()
 
-            setMesssages(Data)
         })
         scrollToBottom()
 
@@ -42,8 +42,8 @@ const Chat = (props) => {
         console.log('getmsgs')
         axios.post('/getMsg', reqData).then(res => {
             setMesssages(res.data.msg_list)
+            scrollToBottom()
         })
-        scrollToBottom()
     }
 
     const handleKeyPress = (e) => {
@@ -75,12 +75,12 @@ const Chat = (props) => {
     }
 
     return (
-        <div className="chat-pane col">
+        <div className="chat-pane">
             <div className='prev-chats' id='msg-list'>
                 <PrevChats messages={messages} />
             </div>
-            <div className='chat-input' >
-                <input type="text" name="chat-input" id="chat-input" onKeyPress={handleKeyPress} onChange={onChanegMsg} id='chat-input' />
+            <div className='chat-input text-center' >
+                <input type="text" className="w-100" name="chat-input" id="chat-input" onKeyPress={handleKeyPress} onChange={onChanegMsg} id='chat-input' />
             </div>
         </div>
     )

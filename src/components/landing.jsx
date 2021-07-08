@@ -39,9 +39,11 @@ export default class Landing extends Component {
                 alert('room does not exist');
                 return
             }
+            else {
+                this.props.history.push(`/${reqData.roomID}`);
+            }
         })
         sessionStorage.setItem('dispName', reqData.dispName)
-        this.props.history.push(`/${reqData.roomID}`);
 
     }
 
@@ -64,30 +66,27 @@ export default class Landing extends Component {
             if (res.data.room_exists == true) {
                 alert('room already exists');
                 return
+            } else {
+                this.props.history.push(`/${reqData.roomID}`);
             }
         })
         sessionStorage.setItem('dispName', reqData.dispName)
-        this.props.history.push(`/${reqData.roomID}`);
     }
 
     render() {
         return (
-            <div className='main-pane col centered'>
-                <h1>welcome</h1>
-                <div className='centered rounded-corners'>
-                    <input type="text" required id='display-name' onChange={this.onChange} placeholder='displayName' />
+            <div className='container  mt-5 '>
+                <h1 className="big-text text-center mb-0"><b>TeamsLite</b></h1>
+                <div className='rounded-corners'>
+                    <input type="text" required id='display-name' onChange={this.onChange} placeholder='displayName' className="form-control" />
                 </div>
                 <br />
-                <div className='col'>
-                    <input type="text" id='roomID' onChange={this.onChange} placeholder='roomID' />
-                    <div className='row'>
-                        <button className='red btn' onClick={this.onCreateRoom}>create new room</button>
-                        <div className='col'>
-                            <button className='btn red' onClick={this.onJoinRoom}>join room</button>
-                        </div>
-                    </div>
-                    </div>
+                <div className='column text-center'>
+                    <input type="text" id='roomID' onChange={this.onChange} placeholder='roomID' className="form-control"/> <br/>
+                    <button className=" muave shadow-move btn mx-md-2 my-2 my-md-0" onClick={this.onCreateRoom}>create new room</button>
+                    <button className="red shadow-move btn  mx-md-2 my-2 my-md-0" onClick={this.onJoinRoom}>join room</button>
                 </div>
-                )
+            </div>
+        )
     }
 }

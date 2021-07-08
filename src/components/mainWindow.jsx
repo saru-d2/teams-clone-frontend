@@ -13,14 +13,18 @@ const MainWindow = (props) => {
 
 
     return (
-        <div className='main-pane row'>
-            <Room roomID={roomID} dispName={dispName} />
-            <div className='right-pane col'>
-                <Chat dispName={dispName} roomID={roomID}/>
+        <div className='container w-100 h-100 mw-100 mh-100 m-0 p-0  main-window'>
+            <div className="row m-0 p-0 h-100 vh-100 ">
+                <div className='col-md-10 w-75 m-0 p-0 h-100'>
+                    <Room roomID={roomID} dispName={dispName} />
+                </div>
+                <div className='col-md-2 m-0 w-25 p-0'>
+                    <Chat dispName={dispName} roomID={roomID} />
+                </div>
             </div>
         </div>
     )
-  
+
 }
 
 export default MainWindow;
