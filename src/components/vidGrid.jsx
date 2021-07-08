@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Peer from "simple-peer";
 import socket from '../helpers/socketConfig'
 import {Mic, MicOff, VideocamOff, Videocam} from '@material-ui/icons'
-
-// const SERVER = 'http://localhost:4000'
-const SERVER = 'https://teams-clone-backend-server.herokuapp.com/'
+import SERVER from '../config'
+// const SERVER = 'https://teams-clone-backend-server.herokuapp.com/'
 
 const Video = (props) => {
     const ref = useRef();
@@ -51,7 +50,11 @@ const Room = (props) => {
                         peerID: userID,
                         peer,
                     })
-                    tempPeers.push(peer);
+                    // tempPeers.push(({peer}));
+                    tempPeers.push({
+                        peerID: userID, 
+                        peer, 
+                    })
                 })
                 setPeers(tempPeers);
             })
@@ -63,14 +66,16 @@ const Room = (props) => {
                     peer,
                 })
 
-                setPeers([...peers, peer]);
+                setPeers([...peers, {peer, peerID: payload.callerID}]);
             });
 
             socket.on("user-left", data => {
-                var tempPeers = peers
-                console.log('user-left', data)
-                
-                console.log('peers', peers)
+                const id = data.userID;
+                const peerObj = peersRef.current.find(p=> p.peerID == id) 
+                if (peerObj) peerObj.peer.destroy();
+                const peersRefCur = peersRef.current.filter(p=> p.peerID !== id)
+                peersRef.current = peersRefCur
+                setPeers(peersRefCur)
             })
 
             socket.on("receiving returned signal", payload => {
@@ -154,10 +159,10 @@ const Room = (props) => {
         <div className='left-pane col'>
         <div className='vidGrid col'>
             <video muted ref={userVideo} autoPlay playsInline />
-            {peers.map((peer, index) => {
+            {peers.map((peer) => {
                 
                 return (
-                    <Video key={index} peer={peer} />
+                    <Video key={peer.peerID} peer={peer.peer} />
                 );
             })}
         </div>

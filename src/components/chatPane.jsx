@@ -25,9 +25,13 @@ const Chat = (props) => {
     useEffect(() => {
         scrollToBottom()
         getMsgs()
-        socket.on('msg-sent', () => {
+        socket.on('msg-sent', (Data) => {
             console.log('new-messages');
-            getMsgs();
+            // getMsgs();
+            console.log(Data)
+            scrollToBottom()
+
+            setMesssages(Data)
         })
         scrollToBottom()
 
@@ -45,8 +49,8 @@ const Chat = (props) => {
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             //TODO send msg through axios
-            getMsgs()
-            socket.emit('new-msg', (roomID));
+            // getMsgs()
+            // socket.emit('new-msg', (roomID));
 
             if (msg_input.length > 0) {
                 const reqData = {
@@ -55,19 +59,14 @@ const Chat = (props) => {
                     roomID: roomID,
                 }
                 console.log({ reqData })
-                axios.post('/sendMsg', reqData).then(res => {
-                    // console.log(res);
-                })
-                socket.emit('new-msg', (roomID));
+                // axios.post('/sendMsg', reqData).then(res => {
+                //     // console.log(res);
+                // })
+                socket.emit('new-msg', (reqData));
                 setMsg('')
                 var chat_input = document.getElementById('chat-input');
                 chat_input.value = ''
             }
-        }
-        if (e.key == '1') {
-            getMsgs()
-            socket.emit('new-msg', (roomID));
-
         }
     }
 

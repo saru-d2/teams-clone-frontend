@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Room from './vidGrid'
 import Chat from './chatPane'
 import socketClient from "socket.io-client";
-// const SERVER = 'http://localhost:4000'
-const SERVER = 'https://teams-clone-backend-server.herokuapp.com/'
+import SERVER from '../config'
+
 const axios = require('axios');
 
 

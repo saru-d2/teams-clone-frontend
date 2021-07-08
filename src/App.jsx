@@ -4,8 +4,9 @@ import { Redirect, HashRouter as Router, Route } from 'react-router-dom';
 import Landing from './components/landing'
 import vidChat from './components/mainWindow'
  
-// axios.defaults.baseURL = 'http://localhost:4000';
-axios.defaults.baseURL = 'https://teams-clone-backend-server.herokuapp.com/';
+import SERVER from './config'
+axios.defaults.baseURL = SERVER;
+
 
 
 function App() {
