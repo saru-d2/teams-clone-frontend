@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/teams-clone-frontend/static/css/main.39765a14.chunk.css",
-    "main.js": "/teams-clone-frontend/static/js/main.12f84ab5.chunk.js",
-    "main.js.map": "/teams-clone-frontend/static/js/main.12f84ab5.chunk.js.map",
+    "main.css": "/teams-clone-frontend/static/css/main.c828943e.chunk.css",
+    "main.js": "/teams-clone-frontend/static/js/main.58cacdb9.chunk.js",
+    "main.js.map": "/teams-clone-frontend/static/js/main.58cacdb9.chunk.js.map",
     "runtime-main.js": "/teams-clone-frontend/static/js/runtime-main.f55a7589.js",
     "runtime-main.js.map": "/teams-clone-frontend/static/js/runtime-main.f55a7589.js.map",
     "static/css/2.fb17aa6d.chunk.css": "/teams-clone-frontend/static/css/2.fb17aa6d.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.c850c910.chunk.js.map": "/teams-clone-frontend/static/js/3.c850c910.chunk.js.map",
     "index.html": "/teams-clone-frontend/index.html",
     "static/css/2.fb17aa6d.chunk.css.map": "/teams-clone-frontend/static/css/2.fb17aa6d.chunk.css.map",
-    "static/css/main.39765a14.chunk.css.map": "/teams-clone-frontend/static/css/main.39765a14.chunk.css.map",
+    "static/css/main.c828943e.chunk.css.map": "/teams-clone-frontend/static/css/main.c828943e.chunk.css.map",
     "static/js/2.b7041bbb.chunk.js.LICENSE.txt": "/teams-clone-frontend/static/js/2.b7041bbb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f55a7589.js",
     "static/css/2.fb17aa6d.chunk.css",
     "static/js/2.b7041bbb.chunk.js",
-    "static/css/main.39765a14.chunk.css",
-    "static/js/main.12f84ab5.chunk.js"
+    "static/css/main.c828943e.chunk.css",
+    "static/js/main.58cacdb9.chunk.js"
   ]
 }
