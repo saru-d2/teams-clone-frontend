@@ -8,7 +8,7 @@ Made with <span style="color: #e25555;">&hearts;</span> in India by [saru](https
 
 ### Prerequesists -
 
-- node 
+- node
 
 After installing node, run the following commands to initialize the project.
 
@@ -19,7 +19,7 @@ After installing node, run the following commands to initialize the project.
     npm start
 ```
 
-You may need to change [config.jsx](src/config.js) to use your local backend.
+Additionally you might want to build the backend also, which you can find [here](https://github.com/saru-d2/teams-clone-backend). In which case you may need to change [config.jsx](src/config.js) to use your local backend.
 
 Then visit the page at http://localhost:3000
 
