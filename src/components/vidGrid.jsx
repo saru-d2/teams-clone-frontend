@@ -15,7 +15,7 @@ const Video = (props) => {
     }, []);
 
     return (
-        <video className='video' playsInline autoPlay ref={ref} />
+        <video className='h-50 col-md-5 col-sm-12 p-1' playsInline autoPlay ref={ref} />
     );
 }
 
@@ -65,8 +65,8 @@ const Room = (props) => {
                     peerID: payload.callerID,
                     peer,
                 })
-
                 setPeers([...peers, { peer, peerID: payload.callerID }]);
+                
             });
 
             socket.on("user-left", data => {
@@ -157,8 +157,8 @@ const Room = (props) => {
     }
     return (
         <div className='sea-green h-100 container m-0 p-0 '>
-            <div className='row h-95 align-middle justify-content-center'>
-                <video className='video h-50' muted ref={userVideo} autoPlay playsInline />
+            <div className='row h-95 align-middle justify-content-center vidGrid'>
+                <video className='h-50 col-md-5 col-sm-12 p-1' muted ref={userVideo} autoPlay playsInline />
                 {peers.map((peer) => {
                     return (
                         <Video key={peer.peerID} peer={peer.peer} />

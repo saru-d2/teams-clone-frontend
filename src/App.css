@@ -131,3 +131,7 @@ body Link:hover {
 .h-5 {
   height: 5vh;
 }
+
+.vidGrid {
+  align-items: center;
+}
