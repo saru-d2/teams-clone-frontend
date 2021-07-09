@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-built with :love: by [saru](https://github.com/saru-d2)
+Made with <span style="color: #e25555;">&hearts;</span> in India by [saru](https://github.com/saru-d2)
 
 ## Instructions to run
 
