@@ -6,7 +6,7 @@ Made with <span style="color: #e25555;">&hearts;</span> in India by [saru](https
 
 ## Instructions to run
 
-### Prerequesists -
+### Prerequisites -
 
 - node
 
