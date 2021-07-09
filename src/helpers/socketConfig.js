@@ -1,3 +1,4 @@
+//socketio initiator
 import openSocket from 'socket.io-client';
 import SERVER from '../config';
 

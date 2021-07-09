@@ -1,40 +1,42 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from 'axios'
 import socket from '../helpers/socketConfig'
-import { VariableSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
-import PrevChats from "./prevChats";
-import { animateScroll } from "react-scroll";
 
 function scrollToBottom() {
+    //scrolls to the bottom
     console.log('scroll')
     const msg_list = document.getElementById('msg-list')
     console.log(msg_list)
     msg_list.scrollTo(0, msg_list.scrollHeight - msg_list.clientHeight)
 }
 
+const PrevChats = (props) => {
+    // component to assemble the messages as a ul
+    const messages = props.messages;
+    return (
+        <ul className='message-list w-100' >
+            {messages.map(msg => {
+                return <li><div className='msg '>{msg.from}:<br /> {msg.msg}<br /></div><br /></li>
+            })}
+        </ul>
+    )
+}
+
 const Chat = (props) => {
-    const [error, setError] = useState([])
     const [messages, setMesssages] = useState([])
     const [msg_input, setMsg] = useState('')
     const dispName = props.dispName
     const roomID = props.roomID
-
-
 
     useEffect(() => {
         scrollToBottom()
         getMsgs()
         socket.on('msg-sent', (Data) => {
             console.log('new-messages');
-            // getMsgs();
             console.log(Data)
             setMesssages(Data)
             scrollToBottom()
-
         })
-        scrollToBottom()
-
     }, [])
 
     const getMsgs = () => {
@@ -48,10 +50,6 @@ const Chat = (props) => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            //TODO send msg through axios
-            // getMsgs()
-            // socket.emit('new-msg', (roomID));
-
             if (msg_input.length > 0) {
                 const reqData = {
                     msg: msg_input,
@@ -59,12 +57,10 @@ const Chat = (props) => {
                     roomID: roomID,
                 }
                 console.log({ reqData })
-                // axios.post('/sendMsg', reqData).then(res => {
-                //     // console.log(res);
-                // })
                 socket.emit('new-msg', (reqData));
                 setMsg('')
                 var chat_input = document.getElementById('chat-input');
+                // clearing the input field
                 chat_input.value = ''
             }
         }

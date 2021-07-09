@@ -1,10 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Room from './vidGrid'
 import Chat from './chatPane'
-import socketClient from "socket.io-client";
-import SERVER from '../config'
-
-const axios = require('axios');
 
 
 const MainWindow = (props) => {

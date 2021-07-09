@@ -3,11 +3,9 @@ import Peer from "simple-peer";
 import socket from '../helpers/socketConfig'
 import { Mic, MicOff, VideocamOff, Videocam } from '@material-ui/icons'
 import SERVER from '../config'
-// const SERVER = 'https://teams-clone-backend-server.herokuapp.com/'
 
 const Video = (props) => {
     const ref = useRef();
-
     useEffect(() => {
         props.peer.on("stream", stream => {
             ref.current.srcObject = stream;
@@ -19,9 +17,6 @@ const Video = (props) => {
     );
 }
 
-
-
-
 const Room = (props) => {
     const [micStatus, setMic] = useState(true)
     const [camStatus, setCam] = useState(true)
@@ -29,19 +24,22 @@ const Room = (props) => {
     const userVideo = useRef();
     const userMediaRef = useRef();
     const peersRef = useRef([]);
-    const dispName = props.dispName
     const roomID = props.roomID;
 
     useEffect(() => {
+        //initial connection
         socket.on('connection', () => {
             console.log('connected to client')
         })
+
         navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
             userVideo.current.srcObject = stream;
             userMediaRef.current = stream;
+            
             socket.emit("join room", roomID);
 
             socket.on("all users", users => {
+                // creates peers for ALL other users
                 const tempPeers = [];
                 console.log(users)
                 users.forEach(userID => {
@@ -50,7 +48,6 @@ const Room = (props) => {
                         peerID: userID,
                         peer,
                     })
-                    // tempPeers.push(({peer}));
                     tempPeers.push({
                         peerID: userID,
                         peer,
@@ -60,6 +57,7 @@ const Room = (props) => {
             })
 
             socket.on("user joined", payload => {
+                //creates new peers for ONLY the new user
                 const peer = addPeer(payload.signal, payload.callerID, stream);
                 peersRef.current.push({
                     peerID: payload.callerID,
@@ -70,6 +68,7 @@ const Room = (props) => {
             });
 
             socket.on("user-left", data => {
+                //user left..
                 const id = data.userID;
                 const peerObj = peersRef.current.find(p => p.peerID == id)
                 if (peerObj) peerObj.peer.destroy();
@@ -86,6 +85,7 @@ const Room = (props) => {
     }, []);
 
     function createPeer(userToSignal, callerID, stream) {
+        // creates the initiator of the room
         const peer = new Peer({
             initiator: true,
             trickle: false,
@@ -100,6 +100,7 @@ const Room = (props) => {
     }
 
     function addPeer(incomingSignal, callerID, stream) {
+        // creates the others
         const peer = new Peer({
             initiator: false,
             trickle: false,
@@ -115,17 +116,15 @@ const Room = (props) => {
         return peer;
     }
 
-    function stuff(e) {
-        console.log(peers)
-    }
-
     function toggleMute() {
+        //toggle mute
         if (userMediaRef.current)
             userMediaRef.current.getAudioTracks()[0].enabled = !userMediaRef.current.getAudioTracks()[0].enabled
         setMic(!micStatus);
         console.log('mute')
     }
     function toggleCam() {
+        //toggles video
         if (userMediaRef.current)
             userMediaRef.current.getVideoTracks()[0].enabled = !userMediaRef.current.getVideoTracks()[0].enabled
         setCam(userMediaRef.current.getVideoTracks()[0].enabled);
@@ -133,6 +132,7 @@ const Room = (props) => {
     }
 
     function MicIcon() {
+        //component for mic button
         // if mic on
         const enabled = micStatus
         if (enabled)
@@ -145,7 +145,8 @@ const Room = (props) => {
     }
 
     function VidIcon() {
-        // if mic on
+        //component for video button
+        // if video on
         const enabled = camStatus
         if (enabled)
             return (

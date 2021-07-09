@@ -1,3 +1,4 @@
+//landing page
 import React, { Component } from "react";
 const axios = require('axios');
 
@@ -43,6 +44,7 @@ export default class Landing extends Component {
                 this.props.history.push(`/${reqData.roomID}`);
             }
         })
+        //store in browser stortage// might need to change
         sessionStorage.setItem('dispName', reqData.dispName)
 
     }
@@ -70,6 +72,7 @@ export default class Landing extends Component {
                 this.props.history.push(`/${reqData.roomID}`);
             }
         })
+        //store in browser stortage// might need to change
         sessionStorage.setItem('dispName', reqData.dispName)
     }
 
