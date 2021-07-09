@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/teams-clone-frontend/static/css/main.c828943e.chunk.css",
-    "main.js": "/teams-clone-frontend/static/js/main.58cacdb9.chunk.js",
-    "main.js.map": "/teams-clone-frontend/static/js/main.58cacdb9.chunk.js.map",
+    "main.js": "/teams-clone-frontend/static/js/main.76d3cd93.chunk.js",
+    "main.js.map": "/teams-clone-frontend/static/js/main.76d3cd93.chunk.js.map",
     "runtime-main.js": "/teams-clone-frontend/static/js/runtime-main.f55a7589.js",
     "runtime-main.js.map": "/teams-clone-frontend/static/js/runtime-main.f55a7589.js.map",
     "static/css/2.fb17aa6d.chunk.css": "/teams-clone-frontend/static/css/2.fb17aa6d.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.fb17aa6d.chunk.css",
     "static/js/2.b7041bbb.chunk.js",
     "static/css/main.c828943e.chunk.css",
-    "static/js/main.58cacdb9.chunk.js"
+    "static/js/main.76d3cd93.chunk.js"
   ]
 }
