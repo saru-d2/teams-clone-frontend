@@ -13,7 +13,7 @@ built with :love: by [saru](https://github.com/saru-d2)
 After installing node, run the following commands to initialize the project.
 
 ```bash
-    git clone {link to this repo}
+    git clone https://github.com/saru-d2/teams-clone-frontend.git
     cd teams-clone-frontend
     npm install
     npm start
@@ -31,4 +31,4 @@ You could also visit the static version of the website [here](https://saru-d2.gi
 - socket.io and peerJS powered live video chat.
 - persistant chat stored in a database.
 
-#### Thanks to Microsoft Engage to give me a reason to make this :)
+### Thanks to Microsoft Engage to give me a reason to make this :)
