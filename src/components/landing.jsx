@@ -1,35 +1,29 @@
-//landing page
-import React, { Component } from "react";
+import React, { useEffect, useRef, useState} from "react";
+import Switch from '@material-ui/core/Switch' 
+import { Mic, Videocam } from '@material-ui/icons'
 const axios = require('axios');
 
 
-export default class Landing extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            errors: {},
-            formData: {}
-        }
-        this.onChange = this.onChange.bind(this)
-        this.onJoinRoom = this.onJoinRoom.bind(this)
-        this.onCreateRoom = this.onCreateRoom.bind(this)
-    }
-
-    onChange(e) {
-        var temp = this.state.formData;
+const Landing = (props) => {
+    const [formData, setForm] = useState({})
+    
+    function onChange(e) {
+        var temp = formData;
         temp[e.target.id] = e.target.value;
-        this.setState({ formData: temp });
+        setForm(temp);
     }
 
-    onJoinRoom() {
-        if (this.state.formData['display-name'] == null ||
-            this.state.formData['roomID'] == null) {
+
+    function onJoinRoom() {
+        console.log(formData)
+        if (formData['display-name'] == null ||
+            formData['roomID'] == null) {
             alert('fill in the roomID and display name')
             return
         }
         var reqData = {
-            dispName: this.state.formData['display-name'],
-            roomID: this.state.formData['roomID'],
+            dispName: formData['display-name'],
+            roomID: formData['roomID'],
         }
         console.log({ req: reqData });
 
@@ -41,7 +35,7 @@ export default class Landing extends Component {
                 return
             }
             else {
-                this.props.history.push(`/${reqData.roomID}`);
+                props.history.push(`/${reqData.roomID}`);
             }
         })
         //store in browser stortage// might need to change
@@ -49,16 +43,16 @@ export default class Landing extends Component {
 
     }
 
-    onCreateRoom() {
+    function onCreateRoom() {
         console.log('create room');
-        if (this.state.formData['display-name'] == null ||
-            this.state.formData['roomID'] == null) {
+        if (formData['display-name'] == null ||
+            formData['roomID'] == null) {
             alert('fill in the roomID and display name')
             return
         }
         var reqData = {
-            dispName: this.state.formData['display-name'],
-            roomID: this.state.formData['roomID'],
+            dispName: formData['display-name'],
+            roomID: formData['roomID'],
         }
         console.log({ req: reqData });
 
@@ -69,27 +63,27 @@ export default class Landing extends Component {
                 alert('room already exists');
                 return
             } else {
-                this.props.history.push(`/${reqData.roomID}`);
+                props.history.push(`/${reqData.roomID}`);
             }
         })
         //store in browser stortage// might need to change
         sessionStorage.setItem('dispName', reqData.dispName)
     }
 
-    render() {
-        return (
-            <div className='container  mt-5 '>
-                <h1 className="big-text text-center mb-0"><b>TeamsLite</b></h1>
-                <div className='rounded-corners'>
-                    <input type="text" required id='display-name' onChange={this.onChange} placeholder='displayName' className="form-control" />
-                </div>
-                <br />
-                <div className='column text-center'>
-                    <input type="text" id='roomID' onChange={this.onChange} placeholder='roomID' className="form-control"/> <br/>
-                    <button className=" muave shadow-move btn mx-md-2 my-2 my-md-0" onClick={this.onCreateRoom}>create new room</button>
-                    <button className="red shadow-move btn  mx-md-2 my-2 my-md-0" onClick={this.onJoinRoom}>join room</button>
-                </div>
+    return (
+        <div className='container  mt-5 '>
+            <h1 className="big-text text-center logo-color mb-0"><b>TeamsLite</b></h1>
+            <div className='rounded-corners'>
+                <input type="text" required id='display-name' onChange={onChange} placeholder='displayName' className="form-control" />
             </div>
-        )
-    }
+            <br />
+            <div className='column text-center'>
+                <input type="text" id='roomID' onChange={onChange} placeholder='roomID' className="form-control"/> <br/>
+                <button className="blue shadow-move btn mx-md-2 my-2 my-md-0" onClick={onCreateRoom}>create new room</button>
+                <button className="red shadow-move btn  mx-md-2 my-2 my-md-0" onClick={onJoinRoom}>join room</button>
+            </div>
+            
+        </div>
+    )
 }
+export default Landing

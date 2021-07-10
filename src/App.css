@@ -1,6 +1,7 @@
+
 :root {
-  --sea-green: #6ed3cf;
-  --muave: #9068be;
+  --sea-green: #3c3b45;
+  --muave: #4f447287;
   --light-grey: #e1e8f0;
   --red: #da3344;
   --dark-grey: rgb(50, 50, 50);
@@ -12,9 +13,12 @@ body {
   font-size: 1.2rem;
   height: 100vh;
   width: 100vw;
-
+  background-color: var(--background);
 }
 
+.input {
+  background-color: rgb(215, 73, 73);
+}
 
 body a {
   text-decoration: none !important;
@@ -88,17 +92,18 @@ body Link:hover {
   color: var(--dark-grey);
 }
 
+.logo {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+}
+
 .prev-chats {
-  background-color: violet;
   overflow-y: scroll;
   height: 100%;
   overflow-x: clip;
+  flex-grow: 1;
 }
 
-.chat-pane {
-  height: 90vh;
-  align-items: center;
-}
 
 .msg {
    background-color: var(--muave);
@@ -125,7 +130,11 @@ body Link:hover {
 }
 
 .h-95 {
-  height: 95vh
+  height: 95vh;
+}
+
+.h-90 {
+  height: 92vh;
 }
 
 .h-5 {
@@ -134,4 +143,24 @@ body Link:hover {
 
 .vidGrid {
   align-items: center;
+}
+
+.leave {
+  color: rgb(255, 72, 72);
+  font-family: 'Barlow';
+  font-weight: 800;
+}
+
+.chat-input {
+  background-color: var(--background);
+  color: #e1e8f0;
+}
+
+.blue {
+  background-color: rgb(85, 174, 174);
+  color: white !important;
+}
+
+.logo-color {
+  color:rgb(205, 205, 205)
 }

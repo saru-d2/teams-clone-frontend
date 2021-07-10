@@ -16,7 +16,7 @@ const PrevChats = (props) => {
     return (
         <ul className='message-list w-100' >
             {messages.map(msg => {
-                return <li><div className='msg '>{msg.from}:<br /> {msg.msg}<br /></div><br /></li>
+                return <li><div className='msg '><b>{msg.from}:</b><br /> {msg.msg}<br /></div><br /></li>
             })}
         </ul>
     )
@@ -71,12 +71,12 @@ const Chat = (props) => {
     }
 
     return (
-        <div className="chat-pane">
-            <div className='prev-chats' id='msg-list'>
+        <div className="container m-0 p-0">
+            <div className='h-90 prev-chats row m-0 p-0 ' id='msg-list'>
                 <PrevChats messages={messages} />
             </div>
-            <div className='chat-input text-center' >
-                <input type="text" className="w-100" name="chat-input" id="chat-input" onKeyPress={handleKeyPress} onChange={onChanegMsg} id='chat-input' />
+            <div className='h-5 chat-input row m-1' >
+                <input type="text" className="form-control chat-input" name="chat-input" id="chat-input" onKeyPress={handleKeyPress} onChange={onChanegMsg} id='chat-input' />
             </div>
         </div>
     )

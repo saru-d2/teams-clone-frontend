@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState} from "react";
 import Peer from "simple-peer";
+import MediaQuery from 'react-responsive'
+import { Link } from 'react-router-dom'
 import socket from '../helpers/socketConfig'
 import { Mic, MicOff, VideocamOff, Videocam } from '@material-ui/icons'
-import SERVER from '../config'
+import logo from '../logo192.png'
 
 const Video = (props) => {
     const ref = useRef();
@@ -18,8 +20,8 @@ const Video = (props) => {
 }
 
 const Room = (props) => {
-    const [micStatus, setMic] = useState(true)
-    const [camStatus, setCam] = useState(true)
+    const [micStatus, setMic] = useState(props.micStatus)
+    const [camStatus, setCam] = useState(props.vidStatus)
     const [peers, setPeers] = useState([]);
     const userVideo = useRef();
     const userMediaRef = useRef();
@@ -35,7 +37,9 @@ const Room = (props) => {
         navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
             userVideo.current.srcObject = stream;
             userMediaRef.current = stream;
-            
+            userMediaRef.current.getAudioTracks()[0].enabled = false
+            userMediaRef.current.getVideoTracks()[0].enabled = false
+
             socket.emit("join room", roomID);
 
             socket.on("all users", users => {
@@ -64,13 +68,13 @@ const Room = (props) => {
                     peer,
                 })
                 setPeers([...peers, { peer, peerID: payload.callerID }]);
-                
+
             });
 
             socket.on("user-left", data => {
                 //user left..
                 const id = data.userID;
-                const peerObj = peersRef.current.find(p => p.peerID == id)
+                const peerObj = peersRef.current.find(p => p.peerID === id)
                 if (peerObj) peerObj.peer.destroy();
                 const peersRefCur = peersRef.current.filter(p => p.peerID !== id)
                 peersRef.current = peersRefCur
@@ -131,6 +135,7 @@ const Room = (props) => {
         console.log('cam')
     }
 
+
     function MicIcon() {
         //component for mic button
         // if mic on
@@ -158,7 +163,7 @@ const Room = (props) => {
     }
     return (
         <div className='sea-green h-100 container m-0 p-0 '>
-            <div className='row h-95 align-middle justify-content-center vidGrid'>
+            <div className='row h-95 align-middle justify-content-center vidGrid m-0 p-0'>
                 <video className='h-50 col-md-5 col-sm-12 p-1' muted ref={userVideo} autoPlay playsInline />
                 {peers.map((peer) => {
                     return (
@@ -166,9 +171,22 @@ const Room = (props) => {
                     );
                 })}
             </div>
-            <div className='controls row-md-5 h-5 w-100 muave text-center align-center '>
-                <MicIcon />
-                <VidIcon />
+            <div className='controls row w-100 muave justify-content-between '>
+                <MediaQuery query='(min-width: 800px)'>
+                    <div className='col-sm-auto text-left logo ms-1'>
+                        TeamsLite &nbsp;
+                        <img src={logo} className='h-5' />
+                    </div>
+                </MediaQuery>
+                <div className='col-sm-auto text-center'>
+                    <MicIcon />
+                    <VidIcon />
+                </div>
+                <MediaQuery query='(min-width: 600px)'>
+                <div className='col-sm-auto float-right leave'>
+                    <Link to="/" >Leave meeting</Link>
+                </div>
+                </MediaQuery>
             </div>
         </div>
     );
