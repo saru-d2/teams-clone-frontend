@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/teams-clone-frontend/static/css/main.9346a9a4.chunk.css",
-    "main.js": "/teams-clone-frontend/static/js/main.470769e1.chunk.js",
-    "main.js.map": "/teams-clone-frontend/static/js/main.470769e1.chunk.js.map",
-    "runtime-main.js": "/teams-clone-frontend/static/js/runtime-main.75893fc4.js",
-    "runtime-main.js.map": "/teams-clone-frontend/static/js/runtime-main.75893fc4.js.map",
+    "main.js": "/teams-clone-frontend/static/js/main.71edbd4f.chunk.js",
+    "main.js.map": "/teams-clone-frontend/static/js/main.71edbd4f.chunk.js.map",
+    "runtime-main.js": "/teams-clone-frontend/static/js/runtime-main.8114dd4f.js",
+    "runtime-main.js.map": "/teams-clone-frontend/static/js/runtime-main.8114dd4f.js.map",
     "static/css/2.fb17aa6d.chunk.css": "/teams-clone-frontend/static/css/2.fb17aa6d.chunk.css",
-    "static/js/2.e058fe20.chunk.js": "/teams-clone-frontend/static/js/2.e058fe20.chunk.js",
-    "static/js/2.e058fe20.chunk.js.map": "/teams-clone-frontend/static/js/2.e058fe20.chunk.js.map",
-    "static/js/3.721af7bb.chunk.js": "/teams-clone-frontend/static/js/3.721af7bb.chunk.js",
-    "static/js/3.721af7bb.chunk.js.map": "/teams-clone-frontend/static/js/3.721af7bb.chunk.js.map",
+    "static/js/2.112a4faa.chunk.js": "/teams-clone-frontend/static/js/2.112a4faa.chunk.js",
+    "static/js/2.112a4faa.chunk.js.map": "/teams-clone-frontend/static/js/2.112a4faa.chunk.js.map",
+    "static/js/3.9b53c2d2.chunk.js": "/teams-clone-frontend/static/js/3.9b53c2d2.chunk.js",
+    "static/js/3.9b53c2d2.chunk.js.map": "/teams-clone-frontend/static/js/3.9b53c2d2.chunk.js.map",
     "index.html": "/teams-clone-frontend/index.html",
     "static/css/2.fb17aa6d.chunk.css.map": "/teams-clone-frontend/static/css/2.fb17aa6d.chunk.css.map",
     "static/css/main.9346a9a4.chunk.css.map": "/teams-clone-frontend/static/css/main.9346a9a4.chunk.css.map",
-    "static/js/2.e058fe20.chunk.js.LICENSE.txt": "/teams-clone-frontend/static/js/2.e058fe20.chunk.js.LICENSE.txt"
+    "static/js/2.112a4faa.chunk.js.LICENSE.txt": "/teams-clone-frontend/static/js/2.112a4faa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.75893fc4.js",
+    "static/js/runtime-main.8114dd4f.js",
     "static/css/2.fb17aa6d.chunk.css",
-    "static/js/2.e058fe20.chunk.js",
+    "static/js/2.112a4faa.chunk.js",
     "static/css/main.9346a9a4.chunk.css",
-    "static/js/main.470769e1.chunk.js"
+    "static/js/main.71edbd4f.chunk.js"
   ]
 }
